@@ -1,0 +1,64 @@
+<div class="container-fluid h-100">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-md-6  py-5 text-center">
+      <h1 class="display-2">Join the Movie Booking App</h1>
+      <p class="lead mt-4">Sign up today to enjoy seamless movie ticket booking, exclusive offers, and personalized recommendations. Become a part of our community and never miss out on the latest releases.</p>
+      <ul class="list-unstyled mt-4 text-left">
+        <li><i class="fas fa-ticket-alt"></i> Easy and quick booking</li>
+        <li><i class="fas fa-film"></i> Up-to-date movie information</li>
+        <li><i class="fas fa-star"></i> Personalized movie recommendations</li>
+        <li><i class="fas fa-tags"></i> Special discounts and offers</li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <div class="card mt-5 shadow-lg mx-auto" style="max-width: 400px;">
+        <div class="card-body">
+          <h3 class="card-title text-center mb-4">Register</h3>
+          <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+            <div class="mb-3">
+              <label for="firstName" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="firstName" [(ngModel)]="signUpRequest.firstName" name="firstName" required>
+              <div *ngIf="submitted && !signUpRequest.firstName" class="text-danger">First Name is required</div>
+            </div>
+            <div class="mb-3">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="lastName" [(ngModel)]="signUpRequest.lastName" name="lastName" required>
+              <div *ngIf="submitted && !signUpRequest.lastName" class="text-danger">Last Name is required</div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" [(ngModel)]="signUpRequest.email" name="email" required email>
+              <div *ngIf="submitted && !signUpRequest.email" class="text-danger">Email is required</div>
+            </div>
+            <div class="mb-3">
+              <label for="loginId" class="form-label">Login ID</label>
+              <input type="text" class="form-control" id="loginId" [(ngModel)]="signUpRequest.loginId" name="loginId" required>
+              <div *ngIf="submitted && !signUpRequest.loginId" class="text-danger">Login ID is required</div>
+            </div>
+            <div class="mb-3">
+              <label for="contactNumber" class="form-label">Contact Number</label>
+              <input type="text" class="form-control" id="contactNumber" [(ngModel)]="signUpRequest.contactNumber" name="contactNumber" required>
+              <div *ngIf="submitted && !signUpRequest.contactNumber" class="text-danger">Contact Number is required</div>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" [(ngModel)]="signUpRequest.password" name="password" required>
+              <div *ngIf="submitted && !signUpRequest.password" class="text-danger">Password is required</div>
+            </div>
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+              <div *ngIf="submitted && (signUpRequest.password !== confirmPassword)" class="text-danger">Passwords must match</div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100" [disabled]="loading">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+              Register
+            </button>
+            <a routerLink="/login" class="text-decoration-none text-primary">Already have a account? Login in</a>
+          </form>
+          <div *ngIf="errorMessage" class="text-danger mt-3">{{ errorMessage }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

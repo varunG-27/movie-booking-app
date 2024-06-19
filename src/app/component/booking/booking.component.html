@@ -1,0 +1,42 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+  <div class="container-fluid">
+    <a class="navbar-brand">Movie Booking App</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+          </li>
+          <!-- Add more navigation items as needed -->
+      </ul>
+      <!-- You can add additional elements here, such as search bar or buttons -->
+  </div>
+    <div class="d-flex">
+      <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container  mt-5">
+  <h2 class="mb-4">Book Tickets for {{ movieName }}</h2>
+  <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+          <label for="loginId">Login ID</label>
+          <input type="text" class="form-control" id="loginId" [(ngModel)]="ticket.loginId" name="loginId"><br>
+      </div>
+      <div class="form-group">
+          <label for="theatreName">Theatre Name</label>
+          <input type="text" class="form-control" id="theatreName" [(ngModel)]="ticket.theatreName" name="theatreName" required><br>
+      </div>
+      <div class="form-group">
+          <label for="noOfTickets">Number of Tickets</label>
+          <input type="number" class="form-control" id="noOfTickets" [(ngModel)]="ticket.noOfTickets" name="noOfTickets" required><br>
+      </div>
+      <div class="form-group">
+          <label for="seatNumber">Seat Numbers (comma separated)</label>
+          <input type="text" class="form-control" id="seatNumber" [(ngModel)]="seatNumbers" name="seatNumber" required><br>
+      </div>
+      <button type="submit" class="btn btn-primary">Book</button>
+  </form>
+</div>
+

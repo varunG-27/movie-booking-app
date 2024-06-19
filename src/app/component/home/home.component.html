@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+  <div class="container-fluid">
+    <a class="navbar-brand">Movie Booking App</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a routerLink="/admin" class="nav-link ">View Booked Ticket</a>
+          </li>
+          <!-- Add more navigation items as needed -->
+      </ul>
+      <!-- You can add additional elements here, such as search bar or buttons -->
+  </div>
+    <div class="d-flex">
+      <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-between mb-4">
+    <h3>Available Movies</h3>
+    <input type="text" class="form-control w-25" placeholder="Search by movie name" [(ngModel)]="searchQuery" (input)="filterMovies()">
+  </div>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let movie of filteredMovies">
+      <div class="card">
+        <img src="./assets/ticket.jpg" class="card-img-top" alt="Movie Image">
+        <div class="card-body">
+          <h5 class="card-title">{{ movie.movieName }}</h5>
+          <p class="card-text">Theater: {{ movie.theatreName }}</p>
+          <p class="card-text">Tickets Available: {{ movie.noOfTicketsAvailable }}</p>
+          <p class="card-text">Tickets Status: {{ movie.ticketStatus }}</p>
+          <button (click)="bookMovie(movie.movieName)" class="btn btn-primary">Book Ticket</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
